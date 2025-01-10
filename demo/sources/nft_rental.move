@@ -3,7 +3,7 @@ module demo::nft_rental;
 use kiosk::kiosk_lock_rule::Rule as LockRule;
 use sui::bag;
 use sui::balance::{Self, Balance};
-use sui::clock::{Self, Clock};
+use sui::clock::Clock;
 use sui::coin::{Self, Coin};
 use sui::kiosk::{Kiosk, KioskOwnerCap};
 use sui::kiosk_extension;
@@ -47,7 +47,7 @@ public struct Promise {
     start_date: u64,
     /// 每日价格
     price_per_day: u64,
-    renter_kiosk: address,
+    renter_kiosk: ID,
     borrower_kiosk: ID,
 }
 
@@ -189,7 +189,7 @@ public fun rent<T: key + store>(
     fees_amount = fees_amount / (MAX_BASIS_POINTS as u128);
 
     let fees = coin.split(fees_amount as u64, ctx);
-    coin::put(&mut rental_policy.balance, coin);
+    coin::put(&mut rental_policy.balance, fees);
     transfer::public_transfer(coin, renter_kiosk.owner());
     rentable.start_date.fill(clock.timestamp_ms());
 

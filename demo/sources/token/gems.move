@@ -11,13 +11,13 @@ use sui::tx_context::sender;
 const EUnknownAmount: u64 = 0;
 
 const SMALL_BUNDLE: u64 = 10_000_000_000;
-const SMALL_AMOUNT: u64 = 100;
+// const SMALL_AMOUNT: u64 = 100;
 
 const MEDIUM_BUNDLE: u64 = 100_000_000_000;
-const MEDIUM_AMOUNT: u64 = 5_000;
+// const MEDIUM_AMOUNT: u64 = 5_000;
 
 const LARGE_BUNDLE: u64 = 1_000_000_000_000;
-const LARGE_AMOUNT: u64 = 100_000;
+// const LARGE_AMOUNT: u64 = 100_000;
 
 public struct GEM has drop {}
 
